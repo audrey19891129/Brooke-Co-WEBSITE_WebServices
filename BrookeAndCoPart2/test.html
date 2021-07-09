@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="778803378153-dr7d54vbi2qua2udk9jabn0q91squ2gg.apps.googleusercontent.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="/jqueryUI/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Test</title>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="/jqueryUI/jquery-ui.min.js"></script>
+    <script src="/jqueryUI/jquery-ui.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        alert("start");
+/*
+        $.ajax({
+            url: "https://controller/PRODUCT_List",
+            method: "post",
+            //data: data,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+
+                $(data).each(function (index, obj) {
+
+                    $("body").append(JSON.stringify(obj));
+                });
+            },
+            fail: function (xhr, textStatus, errorThrown) {
+                alert('request failed');
+            }
+        });
+*/
+var soapMessage =
+    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://controller/">' +
+        '<soapenv:Header/>' +
+            '<soapenv:Body>' +
+                '<con:PRODUCT_List/>' +
+            '</soapenv:Body>' +
+    '</soapenv:Envelope>';
+
+$.ajax({
+    url: "http://192.168.0.12:8080/brookeandcoapp/BrookeAndCo",
+    type: "POST",
+    dataType: "xml",
+    contentType: "text/xml; charset=\"utf-8\"",
+    headers: {
+        SOAPAction: ""
+    },
+    data: soapMessage,
+    success: function (data) {
+
+                $(data).each(function (index, obj) {
+
+                    $("body").append(JSON.stringify(obj));
+                });
+            },
+            fail: function (xhr, textStatus, errorThrown) {
+                alert('request failed');
+            }
+});
+    </script>
+</body>
+</html>
