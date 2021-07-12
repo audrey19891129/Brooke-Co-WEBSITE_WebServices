@@ -9,7 +9,7 @@ public class Gmail {
 	 public static void sendEmail(String email, Order order, Address address) {
 
 	        final String username = "lachapelle.audrey.1989@gmail.com";
-	        final String password = "kerovischt2626";
+	        final String password = "PASSWORD";
 
 	        Properties prop = new Properties();
 	        prop.put("mail.smtp.host", "smtp.gmail.com");
